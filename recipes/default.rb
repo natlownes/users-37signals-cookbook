@@ -1,6 +1,6 @@
 #require_recipe 'ruby-shadow'
 
-groups = search(:groups)
+groups = node[:groups]
 
 groups.each do |group|
   group group[:id] do
