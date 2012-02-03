@@ -10,7 +10,7 @@ groups.each do |group|
   end
 
   if node['active_groups'].include?(group['id'])
-    search(:users, "groups:#{group[:id]}").each do |user|
+    search(:users, "groups:#{group['id']}").each do |user|
       puts " " * 800
       puts user.inspect
       home_dir = user['home_dir'] || "/home/#{user['id']}"
