@@ -1,4 +1,4 @@
-require_recipe 'ruby-shadow'
+#require_recipe 'ruby-shadow'
 
 groups = search(:groups)
 
@@ -18,7 +18,7 @@ groups.each do |group|
         gid user[:groups].first
         home home_dir
         shell user[:shell] || "/bin/bash"
-        password user[:password]
+        #password user[:password]
         supports :manage_home => false
         action [:create, :manage]
       end
