@@ -8,11 +8,11 @@ groups.each do |group|
     gid group['gid']
     action [ :create, :modify, :manage ]
   end
+end
 
+groups.each do |group|
   if node['active_groups'].include?(group['id'])
     search(:users, "groups:#{group['id']}").each do |user|
-      puts " " * 800
-      puts user.inspect
       home_dir = user['home_dir'] || "/home/#{user['id']}"
       user user['id'] do
         comment user['full_name']
