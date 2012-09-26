@@ -1,4 +1,4 @@
-#require_recipe 'ruby-shadow'
+require_recipe "users::remove"
 
 groups = search(:groups)
 
@@ -12,7 +12,7 @@ end
 
 groups.each do |group|
   if node['active_groups'].include?(group['id'])
-    search(:users, "groups:#{group['id']}").each do |user|
+    search(:users, "groups:#{group['id']} AND NOT deleted:true").each do |user|
       home_dir = user['home_dir'] || "/home/#{user['id']}"
       user user['id'] do
         comment user['full_name']
@@ -94,3 +94,4 @@ end
 group "ubuntu" do
   action :remove
 end
+
