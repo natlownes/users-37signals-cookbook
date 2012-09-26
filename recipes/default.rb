@@ -94,4 +94,3 @@ end
 group "ubuntu" do
   action :remove
 end
-
