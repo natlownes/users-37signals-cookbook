@@ -55,7 +55,7 @@ groups.each do |group|
 
         if user['ssh_key_groups']
           user['ssh_key_groups'].each do |group|
-            users = search(:users, "groups:#{group}")
+            users = search(:users, "groups:#{group} AND NOT deleted:true")
             users.each do |key_user|
               keys[key_user['id']] = key_user['ssh_key']
             end
@@ -64,7 +64,7 @@ groups.each do |group|
       
         if user['extra_ssh_keys']
           user['extra_ssh_keys'].each do |username|
-            keys[username] = search(:users, "id:#{username}").first['ssh_key']
+            keys[username] = search(:users, "id:#{username} AND NOT deleted:true").first['ssh_key']
           end
         end
 
