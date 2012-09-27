@@ -64,7 +64,8 @@ groups.each do |group|
       
         if user['extra_ssh_keys']
           user['extra_ssh_keys'].each do |username|
-            keys[username] = search(:users, "id:#{username} AND NOT deleted:true").first['ssh_key']
+            extra_user = search(:users, "id:#{username} AND NOT deleted:true").first
+            keys[username] = extra_user['ssh_key'] if extra_user
           end
         end
 
