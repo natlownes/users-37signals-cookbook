@@ -86,11 +86,3 @@ groups.each do |group|
   end
 end
 
-# Remove initial setup user and group.
-user  "ubuntu" do
-  action :remove
-end
-
-group "ubuntu" do
-  action :remove
-end
